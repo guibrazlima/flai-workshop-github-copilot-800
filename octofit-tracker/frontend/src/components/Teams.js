@@ -1,5 +1,22 @@
 import React, { useEffect, useState } from 'react';
 
+// members may come as a Python-style string list e.g. "['Alice', 'Bob']"
+const parseMembers = (members) => {
+  if (Array.isArray(members)) return members;
+  if (typeof members === 'string') {
+    try {
+      // Replace Python single quotes with double quotes for valid JSON
+      const json = members.replace(/'/g, '"');
+      const parsed = JSON.parse(json);
+      if (Array.isArray(parsed)) return parsed;
+    } catch (e) {
+      // fallback: split by comma stripping brackets
+      return members.replace(/[\[\]']/g, '').split(',').map(s => s.trim()).filter(Boolean);
+    }
+  }
+  return [];
+};
+
 const Teams = () => {
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -51,12 +68,14 @@ const Teams = () => {
                       <td>{idx + 1}</td>
                       <td><strong>{team.name || '—'}</strong></td>
                       <td>
-                        {Array.isArray(team.members) && team.members.length > 0
-                          ? team.members.map((m, i) => (
-                              <span key={i} className="badge bg-secondary me-1">{typeof m === 'object' ? (m.name || JSON.stringify(m)) : m}</span>
-                            ))
-                          : <span className="text-muted">No members</span>
-                        }
+                        {(() => {
+                          const memberList = parseMembers(team.members);
+                          return memberList.length > 0
+                            ? memberList.map((m, i) => (
+                                <span key={i} className="badge bg-secondary me-1">{typeof m === 'object' ? (m.name || JSON.stringify(m)) : m}</span>
+                              ))
+                            : <span className="text-muted">No members</span>;
+                        })()}
                       </td>
                     </tr>
                   ))
