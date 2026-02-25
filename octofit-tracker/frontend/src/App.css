@@ -1,31 +1,87 @@
-.App {
+body {
+  background-color: #f8f9fa;
+}
+
+.octofit-navbar {
+  background-color: #1a1a2e !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.octofit-navbar .navbar-brand {
+  color: #e94560 !important;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+.octofit-navbar .nav-link {
+  color: #ccc !important;
+  font-weight: 500;
+  margin-right: 4px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.octofit-navbar .nav-link:hover,
+.octofit-navbar .nav-link.active {
+  color: #fff !important;
+  background-color: #e94560 !important;
+}
+
+.octofit-hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.octofit-hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #e94560;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.octofit-hero p {
+  color: #adb5bd;
+  font-size: 1.1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.component-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  margin-bottom: 1.5rem;
+}
+
+.component-card .card-header {
+  background-color: #1a1a2e;
+  color: #e94560;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-radius: 12px 12px 0 0 !important;
+  padding: 1rem 1.5rem;
+}
+
+.table thead th {
+  background-color: #0f3460;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.table tbody tr:hover {
+  background-color: #f0f4ff;
+}
+
+.badge-score {
+  background-color: #e94560;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
+  font-size: 1rem;
+  padding: 0.35em 0.75em;
+  border-radius: 20px;
 }
 
 @keyframes App-logo-spin {
