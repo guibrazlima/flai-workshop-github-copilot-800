@@ -26,7 +26,7 @@ else:
     base_url = "http://localhost:8000"
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='/api/', permanent=False)),
+    path('', RedirectView.as_view(url=f'{base_url}/api/', permanent=False)),
     path('admin/', admin.site.urls),
     path('api/', api_root, name='api-root'),
     path('api/', include(router.urls)),
